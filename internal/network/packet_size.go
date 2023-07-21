@@ -16,8 +16,13 @@ type PacketSize struct {
 
 // Calculates the size of a packet 
 
-func (c *PacketSize) LengthPacket(pkt *network.Packet) error {
-	c.Size = pkt.Length
+func (c *PacketSize) AddPacket(pkt *network.Packet) error {
+	if !pkt.IsTCP {
+		log.Debugln("TCPState can not process a non TCP packet")
+		return errors.New("can not process a non TCP packet")
+	}
+	size = pkt.Length
+	c.Size.AddValue(size)
 	return nil
 }
 
