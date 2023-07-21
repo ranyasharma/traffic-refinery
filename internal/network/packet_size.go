@@ -13,8 +13,6 @@ type PacketSize struct {
 // Calculates the size of a packet 
 
 func (c *PacketSize) AddPacket(pkt *network.Packet) error {
-	bs := make(pkt.RawData, 1000)
-	sz := len(bs)
-	c.Size = sz
+	c.Size = pkt.Length
 	return nil
 }
