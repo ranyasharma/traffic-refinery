@@ -17,10 +17,6 @@ type PacketSize struct {
 // Calculates the size of a packet 
 
 func (c *PacketSize) AddPacket(pkt *network.Packet) error {
-	if !pkt.IsTCP {
-		log.Debugln("TCPState can not process a non TCP packet")
-		return errors.New("can not process a non TCP packet")
-	}
 	size = pkt.Length
 	c.Size.AddValue(size)
 	return nil
@@ -31,7 +27,7 @@ type PacketSizeOut struct {
 	SizeVar    float64
 }
 
-// Collect returns a []byte representation of the counter
+// Collect returns a []byte representation
 func (c *PacketSize) Collect() []byte {
 	b, _ := json.Marshal(PacketSizeOut{
 		SizeAvg:    c.Size.Avg,
