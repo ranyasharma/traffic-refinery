@@ -37,11 +37,11 @@
   },
   "Services": [
     {
-      "Name": "All",
+      "Name": "Zoom",
       "Filter": {
         "Prefixes": ["0.0.0.0/0"]
       },
-      "Collect": ["PacketCounters"],
+      "Collect": ["PacketCounters", "PacketSize"],
       "Emit": 10000000
     }
   ]
