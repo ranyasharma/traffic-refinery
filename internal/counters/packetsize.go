@@ -1,4 +1,4 @@
-package network
+package counters
 
 import (
 	"encoding/json"
