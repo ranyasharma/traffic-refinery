@@ -11,29 +11,30 @@ import (
 )
 
 type InterpacketArrival struct {
-	Time  welford.Welford
+	Time  int64
 }
 
-// Calculates the size of a packet 
-func (c *InterpacketArrival) TempAddPacket(pkt *network.Packet) error {
-	temp_time = pkt.TStamp
+type InterpacketCounters struct {
+	TempTime InterpacketArrival
+	Difference welford.Welford
 }
 
-func (c *InterpacketArrival) AddPacket(pkt *network.Packet) error {
+
+func (c *InterpacketCounters) AddPacket(pkt *network.Packet) error {
 	time = pkt.TStamp
-	difference = size - temp_size
-	c.Time.AddValue(difference)
+	difference = time - c.TempTime
+	c.Difference.AddValue(difference)
 	return nil
 }
 
-type InterpacketArrivalOut struct {
+type InterpacketCountersOut struct {
 	SizeAvg    float64
 }
 
 // Collect returns a []byte representation
-func (c *InterpacketArrival) Collect() []byte {
+func (c *InterpacketCounters) Collect() []byte {
 	b, _ := json.Marshal(InterpacketArrivalOut{
-		SizeAvg:    c.Time.Avg,
+		SizeAvg:    c.Difference.Avg,
 	})
 	return b
 }
