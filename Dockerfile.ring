@@ -4,6 +4,17 @@ FROM golang:bookworm AS builder
 RUN apt-get update && \
   apt-get -y install libpcap0.8 libpcap0.8-dev
 
+# Install pfring
+RUN apt-get update && \
+  apt-get -y -q install wget lsb-release && \
+  wget -q http://apt.ntop.org/16.04/all/apt-ntop.deb && dpkg -i apt-ntop.deb && \
+  apt-get clean all && \
+  apt-get update && \
+  apt-get -y install pfring
+
+# Install pfring zero copy if desired. Not working right now
+# RUN apt-get -y install pfring-drivers-zc-dkms
+
 # Set the working directory to ...
 WORKDIR /go/src/github.com/traffic-refinery/traffic-refinery/
 
@@ -27,6 +38,14 @@ FROM debian:bookworm
 # Install libpcap
 RUN apt-get update && \
   apt-get -y install libpcap0.8 libpcap0.8-dev
+
+# Install pfring
+RUN apt-get update && \
+  apt-get -y -q install wget lsb-release && \
+  wget -q http://apt.ntop.org/16.04/all/apt-ntop.deb && dpkg -i apt-ntop.deb && \
+  apt-get clean all && \
+  apt-get update && \
+  apt-get -y install pfring
 
 WORKDIR /root/
 COPY --from=builder /go/src/github.com/traffic-refinery/traffic-refinery/tr /usr/bin/
