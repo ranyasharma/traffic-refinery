@@ -2,9 +2,7 @@ package counters
 
 import (
 	"encoding/json"
-	"errors"
-	"math"
-
+	
 	log "github.com/sirupsen/logrus"
 	"github.com/traffic-refinery/traffic-refinery/internal/network"
 	"github.com/traffic-refinery/traffic-refinery/internal/welford"
@@ -21,8 +19,8 @@ type InterpacketCounters struct {
 
 
 func (c *InterpacketCounters) AddPacket(pkt *network.Packet) error {
-	time = pkt.TStamp
-	difference = time - c.TempTime
+	time = int64(pkt.TStamp)
+	difference = int64(time - c.TempTime)
 	c.Difference.AddValue(difference)
 	return nil
 }
@@ -33,7 +31,7 @@ type InterpacketCountersOut struct {
 
 // Collect returns a []byte representation
 func (c *InterpacketCounters) Collect() []byte {
-	b, _ := json.Marshal(InterpacketArrivalOut{
+	b, _ := json.Marshal(InterpacketCountersOut{
 		SizeAvg:    c.Difference.Avg,
 	})
 	return b

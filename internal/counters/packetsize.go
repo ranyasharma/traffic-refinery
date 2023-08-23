@@ -17,7 +17,7 @@ type PacketSize struct {
 // Calculates the size of a packet 
 
 func (c *PacketSize) AddPacket(pkt *network.Packet) error {
-	size = pkt.Length
+	size = float64(pkt.Length)
 	c.Size.AddValue(size)
 	return nil
 }
