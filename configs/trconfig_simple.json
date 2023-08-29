@@ -41,7 +41,7 @@
       "Filter": {
         "Prefixes": ["0.0.0.0/0"]
       },
-      "Collect": ["PacketCounters", "PacketSize"],
+      "Collect": ["PacketCounters", "PacketSize", "InterpacketCounters"],
       "Emit": 10000000
     }
   ]
