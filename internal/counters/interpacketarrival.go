@@ -3,13 +3,12 @@ package counters
 import (
 	"encoding/json"
 	
-	log "github.com/sirupsen/logrus"
 	"github.com/traffic-refinery/traffic-refinery/internal/network"
 	"github.com/traffic-refinery/traffic-refinery/internal/welford"
 )
 
 type InterpacketArrival struct {
-	Time  int64
+	Time  float64
 }
 
 type InterpacketCounters struct {
@@ -19,8 +18,8 @@ type InterpacketCounters struct {
 
 
 func (c *InterpacketCounters) AddPacket(pkt *network.Packet) error {
-	time = int64(pkt.TStamp)
-	difference = int64(time - c.TempTime)
+	time := float64(pkt.TStamp)
+	difference := float64(time - c.TempTime.Time)
 	c.Difference.AddValue(difference)
 	return nil
 }

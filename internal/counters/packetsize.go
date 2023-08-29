@@ -2,10 +2,7 @@ package counters
 
 import (
 	"encoding/json"
-	"errors"
-	"math"
 
-	log "github.com/sirupsen/logrus"
 	"github.com/traffic-refinery/traffic-refinery/internal/network"
 	"github.com/traffic-refinery/traffic-refinery/internal/welford"
 )
@@ -17,7 +14,7 @@ type PacketSize struct {
 // Calculates the size of a packet 
 
 func (c *PacketSize) AddPacket(pkt *network.Packet) error {
-	size = float64(pkt.Length)
+	size := float64(pkt.Length)
 	c.Size.AddValue(size)
 	return nil
 }
