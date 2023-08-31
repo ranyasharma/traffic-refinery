@@ -45,7 +45,8 @@
       "Filter": {
         "DomainsString": ["youtube.com", "ytimg.com", "googlevideo.com"]
       },
-      "Collect": ["PacketCounters", "VideoCounters"],
+      "Collect": ["PacketCounters", "VideoCounters","PacketSize", 
+"InterpacketCounters"],
       "Emit": 10000000
     },
     {
@@ -54,7 +55,8 @@
         "DomainsString": ["netflix.com","nflxvideo.net","nflximg.net","nflxext.com","nflximg.com","nflxso.net"],
         "Prefixes": ["23.246.0.0/18", "37.77.184.0/21", "45.57.0.0/17", "64.120.128.0/17", "66.197.128.0/17", "108.175.32.0/20", "185.2.220.0/22", "185.9.188.0/22", "192.173.64.0/18", "198.38.96.0/19", "198.45.48.0/20", "208.75.79.0/24", "2620:10c:7000::/44", "2a00:86c0::/32"]
       },
-      "Collect": ["PacketCounters", "VideoCounters"],
+      "Collect": ["PacketCounters", "VideoCounters", "PacketSize", 
+"InterpacketCounters"],
       "Emit": 10000000
     },
     {
@@ -63,7 +65,8 @@
         "DomainsString": ["amazon.com", "amazonvideo.com", "primevideo.com", "aiv-cdn.net", "avodassets-a.akamaihd.net"],
         "DomainsRegex": ["avod.*s3.*-.*.akamaihd.net", "amazon.*.llwnd.net", "amazon.*.lldns.net", ".*eu.amazon.fr"]
       },
-      "Collect": ["PacketCounters", "VideoCounters"],
+      "Collect": ["PacketCounters", "VideoCounters", "PacketSize", 
+"InterpacketCounters"],
       "Emit": 10000000
     },
     {
@@ -72,7 +75,8 @@
         "DomainsString": ["hulu.com", "huluqa.com", "huluim.com", "hulustream", "hulu.conviva.com"],
         "DomainsRegex": [".*hulu.*.akamaihd.net", ".*hulu.*.edgekey.net",".*hulu.*.akadns.net"]
       },
-      "Collect": ["PacketCounters", "VideoCounters"],
+      "Collect": ["PacketCounters", "VideoCounters", "PacketSize", 
+"InterpacketCounters"],
       "Emit": 10000000
     },
     {
@@ -80,7 +84,8 @@
       "Filter": {
         "DomainsString": ["twitch.tv", "ttvnw.net", "twitchcdn.net"]
       },
-      "Collect": ["PacketCounters", "VideoCounters"],
+      "Collect": ["PacketCounters", "VideoCounters", "PacketSize", 
+"InterpacketCounters"],
       "Emit": 10000000
     }
   ]
